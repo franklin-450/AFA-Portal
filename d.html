@@ -295,7 +295,7 @@
         }
 
         // 📊 Fetch progress from server using email
-        fetch(`http://localhost:4000/api/progress/${encodeURIComponent(userData.email)}`)
+        fetch(`https://afaserver.onrender.com/api/progress/${encodeURIComponent(userData.email)}`)
             .then(res => res.json())
             .then(data => {
                 document.getElementById("wordProgress").textContent = `${data.word || 0}% complete`;
