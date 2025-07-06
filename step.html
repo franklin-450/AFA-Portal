@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Started - OfficeCamp</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            background: url('https://images.unsplash.com/photo-1581091012184-7f9411ad7161?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+        }
+
+        header {
+            background: rgba(29, 53, 87, 0.95);
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            animation: slideInDown 1s ease-out;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+        }
+
+        .container {
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            margin: 2rem;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .step {
+            background: rgba(255, 255, 255, 0.85);
+            color: #333;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: transform 0.4s;
+        }
+
+        .step:hover {
+            transform: translateY(-10px) scale(1.02);
+        }
+
+        .step h2 {
+            margin-top: 0;
+            color: #1d3557;
+        }
+
+        .cta {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .cta a {
+            background: #457b9d;
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .cta a:hover {
+            background: #356c96;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1 class="animate__animated animate__bounceInLeft"><i class="fas fa-play-circle"></i> Get Started</h1>
+    </header>
+    <div class="container animate__animated animate__fadeIn">
+        <div class="step animate__animated animate__fadeInUp">
+            <h2>Step 1: Create Your Account</h2>
+            <p>Register your account to unlock Microsoft Office courses tailored to your level.</p>
+        </div>
+
+        <div class="step animate__animated animate__fadeInUp animate__delay-1s">
+            <h2>Step 2: Start With Word</h2>
+            <p>Begin your journey with Microsoft Word: formatting, styles, templates, and more.</p>
+        </div>
+
+        <div class="step animate__animated animate__fadeInUp animate__delay-2s">
+            <h2>Step 3: Track Your Progress</h2>
+            <p>Complete interactive lessons, quizzes, and projects to move to the next level.</p>
+        </div>
+
+        <div class="step animate__animated animate__fadeInUp animate__delay-3s">
+            <h2>Step 4: Unlock Excel, PowerPoint & More</h2>
+            <p>Access advanced Office tools as you progress: Excel, PowerPoint, Access, and Publisher.</p>
+        </div>
+
+        <div class="step animate__animated animate__fadeInUp animate__delay-4s">
+            <h2>Step 5: Earn Your Certificate</h2>
+            <p>Earn your OfficeCamp certificate to showcase your professional skills in Microsoft Office.</p>
+        </div>
+
+        <div class="cta animate__animated animate__zoomIn animate__delay-5s">
+            <a href="signup.html">Get Started Now</a>
+        </div>
+    </div>
+</body>
+
+</html>

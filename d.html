@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Africa College - Microsoft Office Learning</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            background-color: #1e3a8a;
+            color: white;
+            padding: 1rem;
+            transition: transform 0.3s ease-in-out;
+            z-index: 999;
+        }
+
+        .sidebar.closed {
+            transform: translateX(-100%);
+        }
+
+        .content {
+            margin-left: 250px;
+            transition: margin-left 0.3s ease-in-out;
+        }
+
+        .content.full {
+            margin-left: 0;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                margin-left: 0 !important;
+            }
+
+            .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+        }
+
+        .marquee-container {
+            background: #1e40af;
+            color: white;
+            padding: 10px 0;
+            overflow: hidden;
+        }
+
+        .marquee {
+            display: inline-block;
+            white-space: nowrap;
+            animation: marquee 20s linear infinite;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(100%);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                position: fixed;
+                z-index: 1000;
+            }
+
+            .content {
+                margin-left: 0;
+            }
+        }
+
+        .avatar {
+            background-color: #f59e0b;
+            color: white;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+    <!-- Marquee -->
+    <div class="marquee-container text-center">
+        <div class="marquee">🎓 Welcome to Africa College Microsoft Office Learning Dashboard | Learn Word, Excel,
+            PowerPoint | Get Certified!</div>
+    </div>
+
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar closed">
+        <h2 class="text-xl font-bold mb-4">Africa College</h2>
+        <ul class="space-y-4">
+            <li class="hover:text-yellow-300 cursor-pointer"><i class="fas fa-book-open mr-2"></i> Dashboard</li>
+            <li class="hover:text-yellow-300 cursor-pointer"><i class="fas fa-user mr-2"></i> Profile</li>
+            <li class="hover:text-yellow-300 cursor-pointer"><i class="fas fa-chart-line mr-2"></i> Progress</li>
+            <li class="hover:text-yellow-300 cursor-pointer"><i class="fas fa-cog mr-2"></i> Settings</li>
+        </ul>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="bg-blue-900 text-white p-4 flex justify-between items-center sticky top-0 z-50 shadow">
+        <button onclick="toggleSidebar()" class="text-white text-lg md:hidden">
+            <i class="fas fa-bars"></i>
+        </button>
+        <h1 class="text-2xl font-bold mx-auto md:mx-0">Microsoft Office Learning</h1>
+        <div class="flex items-center space-x-3">
+            <div id="userAvatar" class="avatar hidden"></div>
+
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div id="mainContent" class="content p-6 pt-4">
+        <h2 class="text-xl font-semibold mb-4">Welcome, <span id="userName">Loading...</span></h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fas fa-file-word text-primary me-2"></i>MS Word</h5>
+                        <p class="card-text">Create, edit, and format professional documents.</p>
+                        <a href="/ms-word.html" class="btn btn-primary">Start Course</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fas fa-file-excel text-success me-2"></i>MS Excel</h5>
+                        <p class="card-text">Master spreadsheets, formulas, charts, and data analysis.</p>
+                        <a href="/ms-excel.html" class="btn btn-primary">Start Course</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <i class="fas fa-file-powerpoint text-danger me-2"></i>MS PowerPoint
+                        </h5>
+                        <p class="card-text">
+                            Master the art of impactful presentations using animations, custom slide designs, smart transitions, and professional templates to engage any audience.
+                        </p>
+                        <a href="/ms-powerpoint.html" class="btn btn-primary">Start Course</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <i class="fas fa-database text-danger me-2"></i>MS Access
+                        </h5>
+                        <p class="card-text">
+                            Learn to build and manage powerful databases using queries, forms, and reports. Ideal for
+                            organizing, tracking, and analyzing data with precision.
+                        </p>
+                        <a href="/ms-access.html" class="btn btn-primary">Start Course</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <i class="fas fa-newspaper text-success me-2"></i>MS Publisher
+                        </h5>
+                        <p class="card-text">
+                            Design professional flyers, brochures, newsletters, and more with easy-to-use layout and
+                            branding tools tailored for print and digital publication.
+                        </p>
+                        <a href="/ms-publisher.html" class="btn btn-primary">Start Course</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Progress -->
+        <div class="mt-5">
+            <h3 class="text-lg font-semibold mb-3">📈 Your Progress</h3>
+            <ul class="list-group">
+                <li class="list-group-item">MS Word: <span id="wordProgress">Loading...</span></li>
+                <li class="list-group-item">MS Excel: <span id="excelProgress">Loading...</span></li>
+                <li class="list-group-item">MS PowerPoint: <span id="pptProgress">Loading...</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const content = document.getElementById('mainContent');
+
+            // Toggle classes for mobile and desktop
+            if (window.innerWidth <= 768) {
+                sidebar.classList.toggle('open');
+            } else {
+                sidebar.classList.toggle('closed');
+                content.classList.toggle('full');
+            }
+        }
+
+        // Close sidebar automatically on mobile when a menu item is clicked
+        document.querySelectorAll('#sidebar li').forEach(item => {
+            item.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    document.getElementById('sidebar').classList.remove('open');
+                }
+            });
+        });
+
+        // Optional: Auto-close sidebar on outside click (for mobile)
+        document.addEventListener('click', (e) => {
+            const sidebar = document.getElementById('sidebar');
+            if (
+                window.innerWidth <= 768 &&
+                !sidebar.contains(e.target) &&
+                !e.target.closest('button')
+            ) {
+                sidebar.classList.remove('open');
+            }
+        });
+        // 🛡️ Check if user is logged in
+        const userData = JSON.parse(localStorage.getItem("user") || "null");
+        if (!userData || !userData.email || !userData.fullname) {
+            window.location.href = "signin.html"; // 🔐 redirect to login
+        }
+
+        // 🧑 Show user's name
+        const userName = userData.fullname;
+        document.getElementById("userName").textContent = userName;
+
+        // 👤 Create avatar with first letter
+        if (userName && userName !== "Guest") {
+            const avatar = document.getElementById("userAvatar");
+
+            // Get initials (first letter of first and second name)
+            const initials = userName.split(' ').slice(0, 2).map(n => n[0]?.toUpperCase()).join('') || 'U';
+
+            // Generate color from name
+            const hash = Array.from(userName).reduce((acc, char) => acc + char.charCodeAt(0), 0);
+            const colors = [
+                '#f59e0b', // Amber
+                '#10b981', // Emerald
+                '#3b82f6', // Blue
+                '#ef4444', // Red
+                '#6366f1', // Indigo
+                '#ec4899', // Pink
+                '#14b8a6', // Teal
+                '#8b5cf6', // Violet
+                '#f43f5e', // Rose
+                '#22c55e', // Green
+                '#0ea5e9', // Sky Blue
+                '#eab308', // Yellow
+                '#d946ef', // Fuchsia
+                '#fb923c', // Orange
+                '#84cc16', // Lime
+                '#a855f7'  // Purple
+            ];
+
+            const bgColor = colors[hash % colors.length];
+
+            // Apply to avatar
+            avatar.textContent = initials;
+            avatar.classList.remove("hidden");
+            avatar.style.backgroundColor = bgColor;
+        }
+
+        // 📊 Fetch progress from server using email
+        fetch(`http://localhost:4000/api/progress/${encodeURIComponent(userData.email)}`)
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById("wordProgress").textContent = `${data.word || 0}% complete`;
+                document.getElementById("excelProgress").textContent = `${data.excel || 0}% complete`;
+                document.getElementById("pptProgress").textContent = `${data.ppt || 0}% complete`;
+            })
+            .catch((err) => {
+                console.error("Progress fetch failed:", err);
+                document.getElementById("wordProgress").textContent = "0% complete";
+                document.getElementById("excelProgress").textContent = "0% complete";
+                document.getElementById("pptProgress").textContent = "0% complete";
+            });
+        // Toggle profile dropdown on avatar click
+        document.getElementById('userAvatar').addEventListener('click', () => {
+            let existingProfile = document.getElementById('profilePopup');
+            if (existingProfile) {
+                existingProfile.remove();
+                return;
+            }
+
+            const user = JSON.parse(localStorage.getItem("user") || "{}");
+
+            const profileBox = document.createElement('div');
+            profileBox.id = 'profilePopup';
+            profileBox.style.position = 'absolute';
+            profileBox.style.top = '70px';
+            profileBox.style.right = '20px';
+            profileBox.style.background = 'white';
+            profileBox.style.color = '#333';
+            profileBox.style.border = '1px solid #ccc';
+            profileBox.style.borderRadius = '10px';
+            profileBox.style.boxShadow = '0 4px 20px rgba(0,0,0,0.15)';
+            profileBox.style.zIndex = '10000';
+            profileBox.style.padding = '1rem';
+            profileBox.style.minWidth = '200px';
+
+            profileBox.innerHTML = `
+            <strong>${user.fullname || 'Unknown User'}</strong><br>
+            <small>${user.email || ''}</small><br>
+            <small>${user.phone || ''}</small><br>
+            <hr>
+            <button onclick="logoutUser()" style="background:#e11d48;color:white;padding:6px 12px;border:none;border-radius:6px;margin-top:10px;width:100%">Logout</button>
+        `;
+
+            document.body.appendChild(profileBox);
+        });
+
+        // Close popup when clicking outside
+        document.addEventListener('click', (e) => {
+            const popup = document.getElementById('profilePopup');
+            const avatar = document.getElementById('userAvatar');
+            if (popup && !popup.contains(e.target) && !avatar.contains(e.target)) {
+                popup.remove();
+            }
+        });
+
+        // Logout function
+        function logoutUser() {
+            localStorage.removeItem("user");
+            window.location.href = "signin.html";
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Africa For Africa - Learn Microsoft Office the Smart Way">
+    <meta name="author" content="Wizard Franky">
+    <title>AFA | Learn Microsoft Office Tools</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <style>
+        :root {
+            --primary-color: #1d3557;
+            --secondary-color: #457b9d;
+            --light-bg: #f1faee;
+            --text-color: #333;
+            --white: #ffffff;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background: var(--primary-color);
+            color: var(--white);
+            box-shadow: var(--shadow);
+        }
+
+        .navbar h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .navbar nav a {
+            margin-left: 1.5rem;
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .navbar nav a:hover {
+            text-decoration: underline;
+        }
+
+        .hero {
+            position: relative;
+            background: url('assets/Students.png') no-repeat center center/cover;
+            color: white;
+            height: 60vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        @media (max-width: 400px) {
+            .hero {
+                background: url('assets/WhatsApp\ Image\ 2025-07-02\ at\ 3.37.48\ PM.jpeg') no-repeat center center/cover;
+            }
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(29, 53, 87, 0.6);
+        }
+
+        .hero .content {
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h2 {
+            font-size: 2.8rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            animation: fadeInDown 1.2s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            animation: fadeIn 2s ease-in;
+        }
+
+        .cta-button {
+            background: var(--white);
+            color: var(--primary-color);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: var(--light-bg);
+            box-shadow: var(--shadow);
+        }
+
+        .floating-cta {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #38bdf8;
+            color: white;
+            padding: 14px 24px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1rem;
+            box-shadow: var(--shadow);
+            text-decoration: none;
+            z-index: 999;
+            transition: background 0.3s ease;
+        }
+
+        .floating-cta:hover {
+            background-color: #0ea5e9;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-top: 3rem;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            font-weight: bold;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease-in-out;
+        }
+
+        .section-title.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .course-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        .course-card {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: transform 0.2s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .course-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .course-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .auth-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .auth-buttons a {
+            background: var(--secondary-color);
+            color: var(--white);
+            padding: 0.7rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+
+        .auth-buttons a:hover {
+            background: #356c96;
+        }
+
+        footer {
+            text-align: center;
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="navbar">
+        <h1><i class="fas fa-graduation-cap"></i> Africa For Africa</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="courses.html">Courses</a>
+            <a href="#">About</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="content">
+            <h2><i class="fas fa-laptop-code"></i> Africa For Africa College</h2>
+            <p>Learn Microsoft Office the Smart Way — Let's Make Africa Civilized.</p>
+            <div class="auth-buttons">
+                <a href="step.html" class="cta-button"><i class="fas fa-play-circle"></i> Get Started</a>
+                <a href="login.html" class="cta-button">Login</a>
+            </div>
+        </div>
+    </section>
+
+    <h2 class="section-title" id="core-title">Core Office Tools</h2>
+    <section class="course-list" id="course-section">
+        <a class="course-card" href="course.html?course=excel">
+            <i class="fas fa-chart-line fa-2x"></i>
+            <h3>Excel</h3>
+            <p>Formulas, charts, data analysis, dashboards.</p>
+        </a>
+        <a class="course-card" href="course.html?course=word">
+            <i class="fas fa-file-word fa-2x"></i>
+            <h3>Word</h3>
+            <p>Document formatting, styles, layouts, templates.</p>
+        </a>
+        <a class="course-card" href="course.html?course=powerpoint">
+            <i class="fas fa-chalkboard-teacher fa-2x"></i>
+            <h3>PowerPoint</h3>
+            <p>Presentations, transitions, storytelling slides.</p>
+        </a>
+        <a class="course-card" href="course.html?course=access">
+            <i class="fas fa-database fa-2x"></i>
+            <h3>Access</h3>
+            <p>Tables, queries, forms, reports, relationships.</p>
+        </a>
+        <a class="course-card" href="course.html?course=publisher">
+            <i class="fas fa-newspaper fa-2x"></i>
+            <h3>Publisher</h3>
+            <p>Posters, brochures, flyers, and newsletters.</p>
+        </a>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 AFA. Designed by Wizard Franky with professional care.</p>
+    </footer>
+
+    <script>
+        // Reveal on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        document.querySelectorAll('.course-card, .section-title').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+
+</html>
