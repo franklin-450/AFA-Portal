@@ -10,6 +10,8 @@
     <title>AFA | Learn Microsoft Office Tools</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <style>
         :root {
             --primary-color: #1d3557;
@@ -293,12 +295,31 @@
             <p>Posters, brochures, flyers, and newsletters.</p>
         </a>
     </section>
+    <form id="hiddenAdminForm" method="POST" action="https://your-backend.com/api/verify-admin" style="display: none;">
+  <input type="password" name="code" id="adminCodeInput" />
+</form>
 
-    <footer>
-        <p>&copy; 2025 AFA. Designed by Wizard Franky with professional care.</p>
-    </footer>
+<footer class="text-center text-muted mt-5 mb-3">
+  &copy; 2025 AFA. Designed by Wizard Franky with <span id="secretAccess" style="cursor: pointer;">professional care.</span>
+</footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+  document.getElementById('secretAccess').addEventListener('click', () => {
+    Swal.fire({
+      title: 'Enter Admin Code',
+      input: 'password',
+      inputPlaceholder: 'Access code',
+      confirmButtonText: 'Verify',
+      showCancelButton: true
+    }).then(result => {
+      if (result.isConfirmed && result.value) {
+        document.getElementById('adminCodeInput').value = result.value;
+        document.getElementById('hiddenAdminForm').submit();
+      }
+    });
+  });
 
-    <script>
         // Reveal on scroll
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
