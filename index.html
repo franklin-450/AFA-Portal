@@ -294,16 +294,17 @@
             <h3>Publisher</h3>
             <p>Posters, brochures, flyers, and newsletters.</p>
         </a>
-    </section>
-    <form id="hiddenAdminForm" method="POST" action="https://afaserver.onrender.com/api/verify-admin" style="display: none;">
+    </section><!-- Hidden Admin Form (optional, kept for structure) -->
+<form id="hiddenAdminForm" style="display: none;">
   <input type="password" name="code" id="adminCodeInput" />
 </form>
 
 <footer class="text-center text-muted mt-5 mb-3">
-  &copy; 2025 AFA. Designed by Wizard Franky with <span id="secretAccess" style="cursor: pointer;">professional care.</span>
+  &copy; 2025 AFA. Designed by Wizard Franky with
+  <span id="secretAccess" style="cursor: pointer; text-decoration: underline;">professional care.</span>
 </footer>
-    
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
   document.getElementById('secretAccess').addEventListener('click', () => {
     Swal.fire({
@@ -314,12 +315,42 @@
       showCancelButton: true
     }).then(result => {
       if (result.isConfirmed && result.value) {
-        document.getElementById('adminCodeInput').value = result.value;
-        document.getElementById('hiddenAdminForm').submit();
+        const code = result.value;
+
+        Swal.fire({
+          title: 'Verifying...',
+          allowOutsideClick: false,
+          didOpen: () => Swal.showLoading()
+        });
+
+        fetch('https://afaserver.onrender.com/api/verify-admin', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          },
+          body: new URLSearchParams({ code })
+        })
+        .then(response => {
+          if (response.status === 200) {
+            Swal.fire({
+              icon: 'success',
+              title: 'Access Granted',
+              text: 'Redirecting to Admin Login...'
+            }).then(() => {
+              window.location.href = 'admin-login.html';
+            });
+          } else {
+            return response.text().then(msg => {
+              Swal.fire('Access Denied', msg || 'Invalid code.', 'error');
+            });
+          }
+        })
+        .catch(() => {
+          Swal.fire('Server Error', 'Unable to verify admin access.', 'error');
+        });
       }
     });
   });
-
         // Reveal on scroll
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
