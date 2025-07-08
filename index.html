@@ -365,13 +365,14 @@
           didOpen: () => Swal.showLoading()
         });
 
-        fetch('https://afaserver.onrender.com/api/verify-admin', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-          },
-          body: new URLSearchParams({ code })
-        })
+fetch('https://afaserver.onrender.com/api/verify-admin', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({ code })
+})
+
         .then(response => {
           if (response.status === 200) {
             Swal.fire({
