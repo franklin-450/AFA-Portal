@@ -529,6 +529,21 @@ fetch('https://afaserver.onrender.com/api/verify-admin', {
   };
 
     </script>
+    <script>
+  // Collect visit details
+  fetch("https://afaserver.onrender.com/api/track-visit", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      userAgent: navigator.userAgent,
+      platform: navigator.platform,
+      screen: `${screen.width}x${screen.height}`
+    })
+  }).catch(err => console.error("Visit tracking failed:", err));
+</script>
+
 </body>
 
 </html>
