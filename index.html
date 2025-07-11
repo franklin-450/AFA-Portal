@@ -507,26 +507,31 @@ fetch('https://afaserver.onrender.com/api/verify-admin', {
   aiBtn.onclick = () => aiBox.style.display = 'flex';
   closeAI.onclick = () => aiBox.style.display = 'none';
 
-  sendAI.onclick = async () => {
-    const prompt = aiInput.value.trim();
-    if (!prompt) return;
+sendAI.onclick = async () => {
+  const prompt = aiInput.value.trim();
+  if (!prompt) return;
 
-    aiOutput.innerHTML = `<em>Thinking...</em>`;
-    aiInput.value = '';
+  aiOutput.innerHTML = `<em>Thinking...</em>`;
+  aiInput.value = '';
 
-    try {
-      const response = await fetch('https://afaserver.onrender.com/api/ai', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ prompt })
-      });
+  try {
+    const res = await fetch('https://afaserver.onrender.com/api/ai', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: prompt })
+    });
 
-      const data = await response.json();
-      aiOutput.innerHTML = `<strong>AI:</strong> ${data.answer}`;
-    } catch (error) {
-      aiOutput.innerHTML = `<span style="color:red;">Server Error. Try again.</span>`;
+    const data = await res.json();
+
+    if (data.success) {
+      aiOutput.innerText = "AI: " + data.reply;
+    } else {
+      aiOutput.innerText = "AI Error: " + data.error;
     }
-  };
+  } catch (err) {
+    aiOutput.innerText = "Network error. Please try again.";
+  }
+};
 
     </script>
     <script>
